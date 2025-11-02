@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Отзывы о квестах{% endblock %}
+
+{% block content %}
+<h2>Отзывы о квестах</h2>
+
+<form method="post" style="margin-bottom: 2em;">
+    <label>Название квеста:<br>
+        <input type="text" name="contract_name" required style="width: 300px;">
+    </label><br><br>
+
+    <label>Оценка:
+        <select name="rating" required>
+            <option value="">-- Выберите --</option>
+            <option value="1">1 ★</option>
+            <option value="2">2 ★★</option>
+            <option value="3">3 ★★★</option>
+            <option value="4">4 ★★★★</option>
+            <option value="5">5 ★★★★★</option>
+        </select>
+    </label><br><br>
+
+    <label>Комментарий:<br>
+        <textarea name="comment" rows="4" cols="50" placeholder="Ваш комментарий..."></textarea>
+    </label><br><br>
+
+    <button type="submit">Отправить отзыв</button>
+</form>
+
+<hr>
+
+<h3>Список отзывов</h3>
+{% if reviews %}
+    <ul>
+    {% for review in reviews %}
+        <li>
+            <strong>{{ review.contract_name }}</strong> -
+            Оценка: {{ review.rating }} ★<br>
+            {% if review.comment %}
+                Комментарий: {{ review.comment }}
+            {% else %}
+                <em>Комментарий отсутствует</em>
+            {% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Пока нет отзывов.</p>
+{% endif %}
+
+{% endblock %}

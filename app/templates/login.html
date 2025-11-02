@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+<h2>Вход в систему</h2>
+{% if error %}
+    <p style="color:red;">{{ error }}</p>
+{% endif %}
+<form method="post">
+    <label>Логин: <input name="username" required></label><br><br>
+    <label>Пароль: <input type="password" name="password" required></label><br><br>
+    <label>Школа:
+        <select name="school" required>
+            <option value="Волка">Волка</option>
+            <option value="Змеи">Змеи</option>
+            <option value="Грифона">Грифона</option>
+        </select>
+    </label><br><br>
+    <button type="submit">Войти</button>
+</form>
+{% endblock %}

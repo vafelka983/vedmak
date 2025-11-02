@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Контракты{% endblock %}
+
+{% block content %}
+<h2>Выполненные контракты</h2>
+<table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Название монстра</th>
+            <th>Вознаграждение (золото)</th>
+            <th>Дата выполнения</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for contract in contracts %}
+        <tr>
+            <td>{{ contract.monster }}</td>
+            <td>{{ contract.reward }}</td>
+            <td>{{ contract.date }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<h3>Общее количество золота: {{ total_gold }}</h3>
+<br>
+<a href="{{ url_for('contracts_report') }}">Скачать CSV-отчёт</a>
+{% endblock %}

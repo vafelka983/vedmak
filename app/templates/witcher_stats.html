@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Статистика Ведьмака{% endblock %}
+
+{% block content %}
+<h1>Статистика {{ witcher.name }}</h1>
+
+<h2>Текущее снаряжение</h2>
+<ul>
+    {% for item in equipment %}
+        <li>{{ item }}</li>
+    {% else %}
+        <li>Снаряжение отсутствует</li>
+    {% endfor %}
+</ul>
+
+<h2>Уровень токсичности</h2>
+<p>{{ witcher.toxicity }}%</p>
+
+<h2>Активные квесты</h2>
+<ul>
+    {% for quest in active_quests %}
+        <li>{{ quest }}</li>
+    {% else %}
+        <li>Активных квестов нет</li>
+    {% endfor %}
+</ul>
+{% endblock %}

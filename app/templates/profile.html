@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Профиль пользователя{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <h1>{{ witcher.name }}</h1>
+    <div class="school">Школа: {{ witcher.school }}</div>
+
+    <div class="section-title">Знаки</div>
+    <ul class="signs-list">
+        {% for sign in witcher.signs %}
+            <li>{{ sign }}</li>
+        {% endfor %}
+    </ul>
+
+    <div class="section-title">Статистика</div>
+    <table class="stats-table">
+        {% for stat, value in witcher.stats.items() %}
+            <tr>
+                <th>{{ stat }}</th>
+                <td>{{ value }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <p>Ранг: <strong>{{ rank }}</strong></p>
+</div>
+{% endblock %}
